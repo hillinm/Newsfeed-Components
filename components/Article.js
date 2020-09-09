@@ -1,6 +1,9 @@
 // This is the data we will be using to create our articles. Look at it, then proceed to line 93.
 // OPTIONAL: if you're feeling adventurous, try to make this data an export from a different module, and import it here.
 // You can read about ES6 modules here: https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
+import { gsap } from "gsap";
+
+
 const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
@@ -130,7 +133,6 @@ let article = {title: "Some String", date: "11/11/32", firstParagraph: "", secon
 
 function articleMaker(article) {
   const articleDiv = document.createElement("div")
-  console.log(articleDiv)
   articleDiv.classList.add("article")
 
   const articleH2 = document.createElement("h2")
@@ -154,10 +156,31 @@ function articleMaker(article) {
   articleDiv.append(artP1, artP2, artP3, articleSpan)
 
   articleSpan.textContent = "Expand +"
-  articleSpan.addEventListener("click", () => {
-  articleDiv.classList.toggle("article-open")
-  });
   
+  // Add an Event Listener to the button
+  articleSpan.addEventListener("click", () => {
+    // Toggle the active class when expand button clicks
+    articleDiv.classList.toggle("article-open");
+
+    // Change the text of the expand button, depending on active class
+    articleSpan.textContent = articleDiv.classList.contains("article-open")
+      ? "Click to Close"
+      : "Click to Expand";
+
+    if (articleDiv.classList.contains("article-open")) {
+      gsap.to(articleDiv, { height: "auto", duration: 2 });
+      gsap.to(articleDate, { opacity: 1, x: 0, duration: 2 });
+      gsap.to(artP1, { opacity: 1, x: 0, duration: 2 });
+      gsap.to(artP2, { opacity: 1, x: 0, duration: 2 });
+      gsap.to(artP3, { opacity: 1, x: 0, duration: 2 });
+    } else {
+      gsap.to(articleDiv, { height: 60, duration: 2 });
+      gsap.to(articleDate, { opacity: 0, x: -100, duration: 2 });
+      gsap.to(artP1, { opacity: 0, x: -100, duration: 2 });
+      gsap.to(artP2, { opacity: 0, x: -100, duration: 2 });
+      gsap.to(artP3, { opacity: 0, x: -100, duration: 2 });
+    }
+  });
   return articleDiv
 }
 
