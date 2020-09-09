@@ -86,6 +86,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Past Oklahoma QBs Caution Spencer Rattler: \'Those Stars Don\'t Mean Nothing\'',
+    date: 'Sep 7th, 2020',
+    firstParagraph: `Spencer Rattler begins his college football career this week trying to become the rarest of players at the University of Oklahoma: a 5-star quarterback recruit who lives up to his billing.`,
+
+    secondParagraph: `In the past 20 years — the modern era of throwing the football in Norman — the Sooners have recruited and signed just two 5-star quarterbacks out of high school. Neither one came close to his hype.`,
+
+    thirdParagraph: `Brent Rawls was a can’t-miss 5-star out of Evangel Christian in Shreveport, LA, when he got to Oklahoma in 2001, but he never played a down at OU. And Rhett Bomar also arrived in Norman with 5-star fanfare but was gone after just one partial season as the starter.`
   }
 ];
 

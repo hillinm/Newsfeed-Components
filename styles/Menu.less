@@ -16,6 +16,7 @@
   border-left: none;
   border-bottom: none;
   z-index: 2; /* This set the layer level of the element, it has precendence over initial level of 1*/
+  animation: pulse 10s infinite ease-out;
 }
 
 .menu ul li{
@@ -23,8 +24,19 @@
   font-size: 32px;
   padding: 30px 0;
   text-align: center;
+
+
 }
 
 .menu--open {
   display: block;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: maroon;
+  }
+  100% {
+    background-color: bla;
+  }
 }
