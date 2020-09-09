@@ -124,7 +124,7 @@ const data = [
   Refresh the page to see the new article.
 */
 
-const articlesDiv = document.querySelector(".articles");
+/*const articlesDiv = document.querySelector(".articles");*/
 
 let article = {title: "Some String", date: "11/11/32", firstParagraph: "", secondParagraph: "", thirdParagraph: ""};
 
@@ -154,7 +154,7 @@ function articleMaker(article) {
   articleDiv.append(artP1, artP2, artP3, articleSpan)
 
   articleSpan.textContent = "Expand +"
-  articleSpan.addEventListener("click", (event) => {
+  articleSpan.addEventListener("click", () => {
   articleDiv.classList.toggle("article-open")
   });
   
