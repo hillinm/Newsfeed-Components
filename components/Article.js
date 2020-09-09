@@ -155,7 +155,7 @@ function articleMaker(article) {
   articleSpan.classList.add("expandButton")
   articleDiv.append(artP1, artP2, artP3, articleSpan)
 
-  articleSpan.textContent = "Expand +"
+  articleSpan.textContent = "Click to Expand"
   
   // Add an Event Listener to the button
   articleSpan.addEventListener("click", () => {

@@ -1,4 +1,5 @@
 // This is the data we will be using, study it but don't change anything, yet.
+import { gsap } from "gsap";
 
 let menuItems = [
   'Students',
@@ -49,6 +50,7 @@ function menuMaker(array) {
   menuButton.addEventListener('click', () => {
     menuDiv.classList.toggle("menu--open");
     console.log(menuDiv);
+    gsap.to(ulList, { opacity: 75, x: -50, duration: 2 });
   });
   console.log(menuItems)
   menuDiv.append(ulList)
