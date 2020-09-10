@@ -1,6 +1,9 @@
 // This is the data we will be using to create our articles. Look at it, then proceed to line 93.
 // OPTIONAL: if you're feeling adventurous, try to make this data an export from a different module, and import it here.
 // You can read about ES6 modules here: https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
+import { gsap } from "gsap";
+
+
 const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
@@ -86,6 +89,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Past Oklahoma QBs Caution Spencer Rattler: \'Those Stars Don\'t Mean Nothing\'',
+    date: 'Sep 7th, 2020',
+    firstParagraph: `Spencer Rattler begins his college football career this week trying to become the rarest of players at the University of Oklahoma: a 5-star quarterback recruit who lives up to his billing.`,
+
+    secondParagraph: `In the past 20 years — the modern era of throwing the football in Norman — the Sooners have recruited and signed just two 5-star quarterbacks out of high school. Neither one came close to his hype.`,
+
+    thirdParagraph: `Brent Rawls was a can’t-miss 5-star out of Evangel Christian in Shreveport, LA, when he got to Oklahoma in 2001, but he never played a down at OU. And Rhett Bomar also arrived in Norman with 5-star fanfare but was gone after just one partial season as the starter.`
   }
 ];
 
@@ -114,3 +126,65 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+/*const articlesDiv = document.querySelector(".articles");*/
+
+let article = {title: "Some String", date: "11/11/32", firstParagraph: "", secondParagraph: "", thirdParagraph: ""};
+
+function articleMaker(article) {
+  const articleDiv = document.createElement("div")
+  articleDiv.classList.add("article")
+
+  const articleH2 = document.createElement("h2")
+  console.log(articleH2)
+  articleH2.textContent = article.title
+  articleDiv.appendChild(articleH2)
+
+  const articleDate = document.createElement("p")
+  articleDate.classList.add("date")
+  articleDiv.appendChild(articleDate)
+
+  const artP1 = document.createElement("p")
+  artP1.textContent = article.firstParagraph;
+  const artP2 = document.createElement("p")
+  artP2.textContent = article.secondParagraph;
+  const artP3= document.createElement("p")
+  artP3.textContent = article.thirdParagraph;
+
+  const articleSpan = document.createElement("span")
+  articleSpan.classList.add("expandButton")
+  articleDiv.append(artP1, artP2, artP3, articleSpan)
+
+  articleSpan.textContent = "Click to Expand"
+  
+  // Add an Event Listener to the button
+  articleSpan.addEventListener("click", () => {
+    // Toggle the active class when expand button clicks
+    articleDiv.classList.toggle("article-open");
+
+    // Change the text of the expand button, depending on active class
+    articleSpan.textContent = articleDiv.classList.contains("article-open")
+      ? "Click to Close"
+      : "Click to Expand";
+
+    if (articleDiv.classList.contains("article-open")) {
+      gsap.to(articleDiv, { height: "auto", duration: 2 });
+      gsap.to(articleDate, { opacity: 1, x: 0, duration: 2 });
+      gsap.to(artP1, { opacity: 1, x: 0, duration: 2 });
+      gsap.to(artP2, { opacity: 1, x: 0, duration: 2 });
+      gsap.to(artP3, { opacity: 1, x: 0, duration: 2 });
+    } else {
+      gsap.to(articleDiv, { height: 60, duration: 2 });
+      gsap.to(articleDate, { opacity: 0, x: -100, duration: 2 });
+      gsap.to(artP1, { opacity: 0, x: -100, duration: 2 });
+      gsap.to(artP2, { opacity: 0, x: -100, duration: 2 });
+      gsap.to(artP3, { opacity: 0, x: -100, duration: 2 });
+    }
+  });
+  return articleDiv
+}
+
+data.unshift(article)
+data.map(item => {
+  document.querySelector(".articles").appendChild(articleMaker(item))
+})
